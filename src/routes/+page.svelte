@@ -1,14 +1,7 @@
 <script lang="ts">
 	import { writable } from 'svelte/store';
 	import type { PageProps } from './$types';
-
-	interface Task {
-		id?: number;
-		text: string;
-		description?: string;
-		status: 'completed' | 'pending';
-		due: string;
-	}
+	import TaskComponent from '../components/task_component.svelte';
 
 	// Get tasks from the page load function
 	let { data }: PageProps = $props();
@@ -115,21 +108,12 @@
 </form>
 
 <ul>
-	{#each $tasks as todo, index}
-		<li>
-			{todo.text}
-			{#if todo.description}
-				<p>{todo.description}</p>
-			{/if}
-			<p>Status: {todo.status}</p>
-			<p>Due: {todo.due}</p>
-			<input
-				type="checkbox"
-				checked={todo.status === 'completed'}
-				onchange={() => updateStatus(index)}
-			/>
-			<button onclick={() => removeTask(index)}>Remove</button>
-		</li>
+	{#each $tasks as task, index}
+		<TaskComponent
+			{task}
+			updateStatus={() => updateStatus(index)}
+			removeTask={() => removeTask(index)}
+		/>
 	{/each}
 </ul>
 
@@ -149,23 +133,12 @@
 		button {
 			margin: 5px;
 			padding: 10px;
-			width: 200px;
+			width: 100%;
 		}
 	}
 
 	ul {
-		list-style-type: none;
+		list-style: none;
 		padding: 0;
-
-		li {
-			background-color: #f9f9f9;
-			border: 1px solid #ddd;
-			padding: 10px;
-			margin-bottom: 10px;
-
-			p {
-				margin: 5px 0;
-			}
-		}
 	}
 </style>
