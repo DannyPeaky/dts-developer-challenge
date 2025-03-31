@@ -1,45 +1,38 @@
-# DTS Developer Technical Test
+# sv
 
-## Objective
-To assess your ability to build a simple API and frontend using best coding practices.
+Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
-## Scenario
-HMCTS requires a new system to be developed so caseworkers can keep track of their tasks. Your technical test is to develop that new system so caseworkers can efficiently manage their tasks.
+## Creating a project
 
-## Task Requirements
+If you're seeing this, you've probably already done this step. Congrats!
 
-### Backend API
-The backend should be able to:
-- Create a task with the following properties:
-  - Title
-  - Description (optional field)
-  - Status
-  - Due date/time
-- Retrieve a task by ID
-- Retrieve all tasks
-- Update the status of a task
-- Delete a task
+```bash
+# create a new project in the current directory
+npx sv create
 
-### Frontend Application
-The frontend should be able to:
-- Create, view, update, and delete tasks
-- Display tasks in a user-friendly interface
+# create a new project in my-app
+npx sv create my-app
+```
 
-## Technical Requirements
-Here are a few starter repositories if you would like to use our tech stack:
-- [Backend Starter Repo](https://github.com/hmcts/hmcts-dev-test-backend)
-- [Frontend Starter Repo](https://github.com/hmcts/hmcts-dev-test-frontend)
+## Developing
 
-You can use any language you are comfortable with or our own stack:
-- **Backend**: Any language or framework of your choice
-- **Frontend**: Any language or framework of your choice
-- Implement **unit tests**
-- Store data in a **database**
-- Include **validation and error handling**
-- **Document API endpoints**
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## Submission Guidelines
-- Create repositories on GitHub and add add the links to your application
-- Include a helpful `README.md`!
+```bash
+npm run dev
 
-Happy coding!
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
